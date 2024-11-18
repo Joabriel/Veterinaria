@@ -1,56 +1,31 @@
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
+//import java.io.FileInputStream;
+//import java.io.ObjectInputStream;
+import java.io.IOException;
+import java.util.LinkedHashMap;
 
-class Metodos{
+public interface Metodos{
 
-  public void Serializar(Clientes cli, String archivo){
+  public static void Agregar(LinkedHashMap cargar){
 
     try{
-    //-->
   
-    FileOutputStream fileOut = new FileOutputStream(archivo);
+    FileOutputStream fileOut = new FileOutputStream("Datos.txt");
     ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-      out.writeObject(cli);
+      out.writeObject(cargar);
 
     fileOut.close();
-    out.close();  
-    //<--
-    
-    //-->
-    System.out.println();
+    out.close(); 
 
-    FileInputStream fileIn = new FileInputStream("Datos.txt");
-    ObjectInputStream in = new ObjectInputStream(fileIn);
-
-
-    System.out.println("Del archivo: ");
-    //<--
-
-      in.close();
-    }catch(IOException | ClassNotFoundException e){
+    }catch(IOException e){
       System.out.println("Error en serialización y/o deserialización de los datos.");
     }
-
+    
 
   }
 
-  /*
- public static void Agregar(Clientes cli){
-    FileOutputStream file = new FileOutputStream("Datos.txt");
-    ObjectOutputStream out = new ObjectOutputStream(file);
 
-    out.writeObject();
-
-    out.close();
-  }*/
-  /*
-  public static void imprimir(ArrayList<String> lista1){
-    for(String elemento : lista1){
-      System.out.println(elemento+"-");
-      System.out.println();
-    }*/
 
 }

@@ -1,8 +1,8 @@
-package Veterinaria_ProgII;
+import java.io.Serializable;
 
-public class Animales{
-	private String nombre;
-	private String domicilio;
+public abstract class Animales implements Serializable{
+	protected String nombre;
+	protected String domicilio;
 
   public String getNombre(){
     return nombre;
@@ -12,18 +12,18 @@ public class Animales{
   }
 
   public String getDomicilio(){
-    return Domicilio;
+    return domicilio;
   }
   public void setDomicilio(String domicilio){
     this.domicilio = domicilio;
   }
 
-
-	public Veterinaria(){}
+  public Animales(){};
 
   public void MostrarInfo(){
 
   }
+
 
 }
 

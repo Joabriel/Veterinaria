@@ -1,87 +1,55 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.LinkedHashMap;
 
-//
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-//import java.io.FileNotFoundException;
-import java.io.IOException;
-//
-public class Main{
+public class Main implements Metodos{
 
 	public static void main(String[]args){
+    Scanner reader = new Scanner(System.in);
 
-    System.out.println("Se trabajan con datos de CLIENTES.");
-    /*System.out.println("Opcs:");
-    System.out.println("      [1]: Agregar.");
-    System.out.println("      [2]: Leer.");
-    System.out.println("      [3]: Editar.");
-    System.out.println("      [4]: Salir.");
-    int opc;*/
+    System.out.println("Selecciónar: 1:[Cliente], 2:[Mascota]");
+    int selec  = reader.nextInt(); 
 
-    Clientes persona1 = new Clientes();
-    //Metodos met = new Metodos();
-
-    ArrayList<Clientes> lista1 = new ArrayList<>();
-
-    persona1.setNombre("Joabriel");
-    persona1.setDomicilio("Bolivia 1557");
-
-    lista1.add(persona1);
-
-    System.out.println("Lista de ArrayList de Cliente: "+lista1.get(0));
-
-    // Cómo Serializar y Deserializar Objetos?
-    try{
-    //-->
-  
-    FileOutputStream fileOut = new FileOutputStream("Datos.txt");
-    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-      out.writeObject(lista1);
-
-    out.close();  
-    //<--
+    switch(selec){
+      case 1: 
     
-    //-->
-    System.out.println();
+      LinkedHashMap<Integer, Clientes> cargar = new LinkedHashMap<>();
 
-    FileInputStream fileIn = new FileInputStream("Datos.txt");
-    ObjectInputStream in = new ObjectInputStream(fileIn);
+      cargar.put(1 ,new Clientes());
+      cargar.put(2 ,new Clientes());
 
+      // Enviar como parámetro "cargar" para "Metodos.Agregar()".
+      Metodos.Agregar(cargar);
 
-    System.out.println("Del archivo: ");
-    //<--
+      System.out.println("Clientes cargados al archivo.");
+      
 
-      in.close();
-    }catch(IOException | ClassNotFoundException e){
-      System.out.println("Error en serialización y/o deserialización de los datos.");
-    }
-  
+      /*System.out.println("Ingrese nombre e id del cliente.");
+      
+      String nombre = reader.nextLine();
+      int id = reader.nextInt(); 
+
+      Clientes client = new Clientes();
+
+      client.setNombre(nombre);
+      client.setId(id);
+
+      Metodos.Agregar(client); */
     
-    /*
-    do{
-    switch(opc){
-      case 1:
-      met.Agregar(persona);
+    
+    //Metodos.Agregar(client);
+
       break;
       case 2:
-      met.Leer(persona);
-      break;
-      case 3:
-      met.Editar(persona);
-      case 4:
-      System.out.println("Salida....");
+
+      System.out.println("Ingrese nombre");
+
       break;
       default:
-      System.out.println("No.");
+      System.out.println("Selección inválida.");
       break;
-      }
-    }while(opc != 3);
-    */
+    }
 
+   
 	}
  
 }

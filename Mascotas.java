@@ -7,7 +7,7 @@ class Mascotas extends Animales{
   private int edad;
   private double peso;
   private String color;
-	private String estadoSalud; //(Estable, Critico).
+	private String estadoSalud; //(Buena, Estable, Crítico).
 
     public String getEspecie(){
     return especie;
