@@ -18,12 +18,7 @@ public abstract class Animales implements Serializable{
     this.domicilio = domicilio;
   }
 
-  public Animales(){};
-
-  public void MostrarInfo(){
-
-  }
-
+  
 
 }
 
