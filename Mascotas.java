@@ -1,5 +1,3 @@
-package Veterinaria_ProgII;
-
 class Mascotas extends Animales{
 	private String especie;
 	private String raza;
@@ -55,14 +53,24 @@ class Mascotas extends Animales{
     return estadoSalud;
   }
   public void setEstadoSalud(String estadoSalud){
-    this estadoSalud = estadoSalud;
+    this.estadoSalud = estadoSalud;
   }
 
-  public Animal(){}
-
-  void Ingreso(String nombre){
-    System.out.println(nombre+" ingresó a la veterinaria.");
+  public Mascotas(){
+    super();
   }
+
+  public Mascotas(String especie, String raza, char sexo, int edad, double peso, String color, String estadoSalud){
+    super();
+    this.especie = especie;
+    this.raza = raza;
+    this.sexo = sexo;
+    this.edad = edad;
+    this.peso = peso;
+    this.color = color;
+    this.estadoSalud = estadoSalud;
+  };
+
 
   void Vacunar(String nombre){
     System.out.println("La mascota: "+nombre+" esta vacunada!");
@@ -72,17 +80,10 @@ class Mascotas extends Animales{
     System.out.println("La mascota: "+nombre+" Comió.");
   }
 
-  void Chek(boolean estadoSalud){ 
-    
-    if(estadoSalud equals(estadoSalud )){ //Bien
-      Salida();
-    }
-
-  }
-
+/*  void Chek(bool
   void Salida(String nombre){
     System.out.println("La mascota: "+nombre+" vuelve a su casa."); 
   }
-  
+  */
 
 } 

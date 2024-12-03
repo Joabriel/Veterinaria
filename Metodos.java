@@ -4,52 +4,50 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.TreeMap;
 
 public interface Metodos{
 
-  public abstract void Agregar(LinkedHashMap cargar){
-
+  public static void Agregar(LinkedHashMap cargar){
     try{
-  
-    FileOutputStream fileOut = new FileOutputStream("Datos.txt");
-    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+      FileOutputStream fileOut = new FileOutputStream("Datos.ser");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
       out.writeObject(cargar);
 
-    fileOut.close();
-    out.close(); 
-
+      fileOut.close();
+      out.close(); 
     }catch(IOException e){
       System.out.println("Error en serialización de los datos.");
     }
-
   }
 
-  public abstract void Leer(TreeMap maparbol){
+  public static void Leer(){
     
     try{
-        FileInputStream fileInp = new FileInputStream("Datos.txt");
-        ObjectInputStream inp = new ObjectInputStream(fileInp);
+      FileInputStream fileInp = new FileInputStream("Datos.ser");
+      ObjectInputStream inp = new ObjectInputStream(fileInp);
 
-        fileInp.close();
-        inp.close();
-      }catch(IOException e){
+      LinkedHashMap<Clientes, Mascotas> leer = new LinkedHashMap<>();
+
+      leer = (LinkedHashMap) inp.readObject();
+
+      fileInp.close();
+      inp.close();  
+    }catch(IOException | ClassNotFoundException e){
         System.out.println("Error en deserialización de datos.");
       }
 
     }
 
 
-  public abstract void Modificar(){
+  public static void Modificar(){
 
   }
 
-  public abstract void Eliminar(){
+  public static void Eliminar(){
 
   }
 
 
-  }
-
-}
+} 

@@ -4,7 +4,7 @@ public class Clientes extends Animales{
   private int cantMasc;
 
   public Integer getId(){
-    return id
+    return id;
   }
   public void setId(Integer id){
     this.id = id;
@@ -24,7 +24,9 @@ public class Clientes extends Animales{
     this.cantMasc = cantMasc;
   }
 
-  public Clientes(){};
+  public Clientes(){
+    super();
+  };
 
   public Clientes(String nombre, String domicilio, int id, int dni, int cantMasc){
     super();
@@ -33,8 +35,9 @@ public class Clientes extends Animales{
     this.cantMasc = cantMasc;
   }
 
+  @Override
   public String toString(){
-    return "nombre: "+this.nombre+" domicilio: "+this.domicilio;
+    return "nombre: "+this.nombre+" domicilio: "+this.domicilio+" ID: "+this.id+" DNI: "+this.dni+" Cantidad de mascotas: "+this.cantMasc;
 
   }
 
