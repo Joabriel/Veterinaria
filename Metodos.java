@@ -7,16 +7,19 @@ import java.util.LinkedHashMap;
 
 public interface Metodos{
 
-  public static void Agregar(LinkedHashMap cargar){
+  public static void Agregar(LinkedHashMap datos){
     try{
 
       FileOutputStream fileOut = new FileOutputStream("Datos.ser");
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-      out.writeObject(cargar);
+      out.writeObject(datos);
 
       fileOut.close();
-      out.close(); 
+      out.close();
+      System.out.println("");
+      System.out.println("Datos Cargados.");
+      System.out.println("----");
     }catch(IOException e){
       System.out.println("Error en serialización de los datos.");
     }

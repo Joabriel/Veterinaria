@@ -86,4 +86,8 @@ class Mascotas extends Animales{
   }
   */
 
+  public String toString(){
+    return "ID: "+this.id+" Nombre: "+this.nombre+" Domicilio: "+this.domicilio+" Especie: "+this.especie+" Raza: "+this.raza+" Sexo: "+this.sexo+" Edad: "+this.edad+" Peso: "+this.peso+" Color: "+this.color+" Estado de salud: "+this.estadoSalud;
+  }
+
 } 

@@ -1,8 +1,16 @@
 import java.io.Serializable;
 
 public abstract class Animales implements Serializable{
-	protected String nombre;
+	protected int id;
+  protected String nombre;
 	protected String domicilio;
+
+  public Integer getId(){
+    return id;
+  }
+  public void setId(Integer id){
+    this.id = id;
+  }
 
   public String getNombre(){
     return nombre;
