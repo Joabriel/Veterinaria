@@ -1,4 +1,6 @@
-class Registro{
+import java.io.Serializable;
+
+class Registro implements Serializable{
   private Clientes clientes;
   private Mascotas mascotas;
 

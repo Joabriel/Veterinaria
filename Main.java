@@ -14,30 +14,46 @@ public class Main implements Metodos{
 
       LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
 
+      Registro reg = new Registro(new Clientes(), new Mascotas());
+      
       switch(selec){
         case 1:
+
+        int nuevoId = Metodos.obtenerSiguienteID();
+
         System.out.println("AGREGAR: ");
 
-        Registro reg = new Registro(new Clientes(), new Mascotas());
+        // ID del cliente y mascota(s).
 
-        System.out.print("Ingrese ID del cliente y mascota(s): ");
+        reg.getClientes().setId(nuevoId);
+        reg.getMascotas().setId(nuevoId);
+        System.out.println("ID del cliente y mascota(s): "+nuevoId);
+
+        /*System.out.print("Ingrese ID del cliente y mascota(s): ");
         int id = reader.nextInt();
 
-        if(!datos.containsKey(id)){
+        // Boxing: Conversión de primitivo a Wrapper.
+        idWrapper = id;
+
+        if(!datos.containsKey(idWrapper)){
           reg.getClientes().setId(id);  
           reg.getMascotas().setId(id);
         }else{
           System.out.println("Ese ID ya está en uso.");
           selec = 3;
-        }
+        }*/
 
         // (Borrar Buffer).
+        reader.nextLine();
         System.out.println("Nombre del Cliente: ");
         reg.getClientes().setNombre(reader.nextLine());
+
         System.out.println("Domicilio del Cliente: ");
         reg.getClientes().setDomicilio(reader.nextLine());
+        
         System.out.print("DNI del Cliente: ");
         reg.getClientes().setDni(reader.nextInt());
+
         System.out.print("Cantidad de Mascotas: ");
         int cant = reader.nextInt();
         reg.getClientes().setCantMasc(cant);
@@ -45,7 +61,7 @@ public class Main implements Metodos{
 
         for(int i=1; i<=cant; i++){ 
           System.out.println("Datos de mascota N°:"+i);
-          // (Borrar buffer).
+          reader.nextLine();
           System.out.println("Nombre de la mascota");
           reg.getMascotas().setNombre(reader.nextLine());
           reg.getMascotas().setDomicilio(reg.getClientes().getDomicilio());
@@ -59,6 +75,7 @@ public class Main implements Metodos{
           reg.getMascotas().setEdad(reader.nextInt());
           // System.out.print("Peso: ");
           // mascota.setPeso(reader.nextDouble());
+          reader.nextLine();
           System.out.println("Color: ");
           reg.getMascotas().setColor(reader.nextLine());
           System.out.println("Estado de salud: (NULL por ahora).");
@@ -66,10 +83,14 @@ public class Main implements Metodos{
           System.out.println("");
         }
 
-        datos.put(id,reg);
+        // idWrapper = nuevoId;
+
+        datos.put(nuevoId,reg);
         Metodos.Agregar(datos);
 
         break;
+
+
         case 2:
         System.out.println("LEER.");
           
@@ -77,10 +98,19 @@ public class Main implements Metodos{
           x = reader.nextInt();
           
           if(x == 1){
+          System.out.println("Lista completa: ");
+          System.out.println("");
+          datos = Metodos.Leer();
 
-            System.out.println("Clientes: ");
-            Metodos.Leer();
-            System.out.println("----");
+          if(datos != null){
+            for(Integer clave : datos.keySet()){
+            System.out.println("ID: "+clave+" Cliente: "+datos.get(clave));
+          }
+          }else{
+            System.out.println("No se pudieron obtener los datos.");
+          }
+         
+          System.out.println("----");
           }/*else if(x == 2){
       
             System.out.println("Ingrese ID del cliente: ");

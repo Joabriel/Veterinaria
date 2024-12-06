@@ -1,7 +1,8 @@
 import java.io.Serializable;
 
 public abstract class Animales implements Serializable{
-	protected int id;
+  private static final long serialVersionUID = 1l; 
+  protected int id;
   protected String nombre;
 	protected String domicilio;
 
