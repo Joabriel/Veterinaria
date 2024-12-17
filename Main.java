@@ -14,79 +14,12 @@ public class Main implements Metodos{
 
       LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
 
-      Registro reg = new Registro(new Clientes(), new Mascotas());
-      
+
       switch(selec){
         case 1:
-
-        int nuevoId = Metodos.obtenerSiguienteID();
-
         System.out.println("AGREGAR: ");
 
-        // ID del cliente y mascota(s).
-
-        reg.getClientes().setId(nuevoId);
-        reg.getMascotas().setId(nuevoId);
-        System.out.println("ID del cliente y mascota(s): "+nuevoId);
-
-        /*System.out.print("Ingrese ID del cliente y mascota(s): ");
-        int id = reader.nextInt();
-
-        // Boxing: Conversión de primitivo a Wrapper.
-        idWrapper = id;
-
-        if(!datos.containsKey(idWrapper)){
-          reg.getClientes().setId(id);  
-          reg.getMascotas().setId(id);
-        }else{
-          System.out.println("Ese ID ya está en uso.");
-          selec = 3;
-        }*/
-
-        // (Borrar Buffer).
-        reader.nextLine();
-        System.out.println("Nombre del Cliente: ");
-        reg.getClientes().setNombre(reader.nextLine());
-
-        System.out.println("Domicilio del Cliente: ");
-        reg.getClientes().setDomicilio(reader.nextLine());
-        
-        System.out.print("DNI del Cliente: ");
-        reg.getClientes().setDni(reader.nextInt());
-
-        System.out.print("Cantidad de Mascotas: ");
-        int cant = reader.nextInt();
-        reg.getClientes().setCantMasc(cant);
-        System.out.println("");
-
-        for(int i=1; i<=cant; i++){ 
-          System.out.println("Datos de mascota N°:"+i);
-          reader.nextLine();
-          System.out.println("Nombre de la mascota");
-          reg.getMascotas().setNombre(reader.nextLine());
-          reg.getMascotas().setDomicilio(reg.getClientes().getDomicilio());
-          System.out.println("Especie: ");
-          reg.getMascotas().setEspecie(reader.nextLine());
-          System.out.println("Raza: ");
-          reg.getMascotas().setRaza(reader.nextLine());
-          // System.out.print("Sexo: ");
-          // mascota.setSexo(reader.next());
-          System.out.print("Edad: ");
-          reg.getMascotas().setEdad(reader.nextInt());
-          // System.out.print("Peso: ");
-          // mascota.setPeso(reader.nextDouble());
-          reader.nextLine();
-          System.out.println("Color: ");
-          reg.getMascotas().setColor(reader.nextLine());
-          System.out.println("Estado de salud: (NULL por ahora).");
-          reg.getMascotas().setEstadoSalud(null);
-          System.out.println("");
-        }
-
-        // idWrapper = nuevoId;
-
-        datos.put(nuevoId,reg);
-        Metodos.Agregar(datos);
+        Metodos.Agregar();
 
         break;
 

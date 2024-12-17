@@ -27,7 +27,7 @@ class Registro implements Serializable{
 
   @Override
   public String toString(){
-    return clientes.toString()+" - "+mascotas.toString();
+    return clientes.toString()+" //// "+mascotas.toString();
   }
 
 }
