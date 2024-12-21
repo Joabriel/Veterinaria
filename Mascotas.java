@@ -1,11 +1,16 @@
 class Mascotas extends Animales{
+  private int numero;
 	private String especie;
 	private String raza;
-	private char sexo;
   private int edad;
-  private double peso;
   private String color;
-	private String estadoSalud; //(Buena, Estable, Crítico).
+  
+  public int getNumero(){
+    return numero;
+  }
+  public void setNumero(int numero){
+    this.numero = numero;
+  }
 
     public String getEspecie(){
     return especie;
@@ -21,25 +26,11 @@ class Mascotas extends Animales{
     this.raza = raza;
   }
 
-  public char getSexo(){
-    return sexo;
-  }
-  public void setSexo(char sexo){
-    this.sexo = sexo;
-  }
-
   public int getEdad(){
     return edad;
   } 
   public void setEdad(int edad){
     this.edad = edad;
-  }
-
-  public double getPeso(){
-    return peso;
-  }
-  public void setPeso(int peso){
-    this.peso = peso;
   }
 
   public String getColor(){
@@ -49,26 +40,17 @@ class Mascotas extends Animales{
     this.color = color;
   }
 
-  public String getEstadoSalud(){
-    return estadoSalud;
-  }
-  public void setEstadoSalud(String estadoSalud){
-    this.estadoSalud = estadoSalud;
-  }
-
   public Mascotas(){
     super();
   }
 
-  public Mascotas(String especie, String raza, char sexo, int edad, double peso, String color, String estadoSalud){
+  public Mascotas(int numero, String especie, String raza, int edad, String color){
     super();
+    this.numero = numero;
     this.especie = especie;
     this.raza = raza;
-    this.sexo = sexo;
     this.edad = edad;
-    this.peso = peso;
     this.color = color;
-    this.estadoSalud = estadoSalud;
   };
 
 
@@ -87,7 +69,7 @@ class Mascotas extends Animales{
   */
 
   public String toString(){
-    return "ID: "+this.id+" Nombre: "+this.nombre+" Domicilio: "+this.domicilio+" Especie: "+this.especie+" Raza: "+this.raza+" Sexo: "+this.sexo+" Edad: "+this.edad+" Peso: "+this.peso+" Color: "+this.color+" Estado de salud: "+this.estadoSalud;
+    return "ID: "+this.id+" - Núm: "+this.numero+" Nombre: "+this.nombre+" Domicilio: "+this.domicilio+" Especie: "+this.especie+" Raza: "+this.raza+ " Edad: "+this.edad+" Color: "+this.color;
   }
 
 } 

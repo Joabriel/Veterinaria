@@ -1,8 +1,9 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 class Registro implements Serializable{
   private Clientes clientes;
-  private Mascotas mascotas;
+  private ArrayList<Mascotas> mascotas;
 
   public Clientes getClientes(){
     return clientes;
@@ -11,16 +12,16 @@ class Registro implements Serializable{
     this.clientes = clientes;
   }
 
-  public Mascotas getMascotas(){
+  public ArrayList<Mascotas> getMascotas(){
     return mascotas;
   }
-  public void setMascotas(Mascotas mascotas){
+  public void setMascotas(ArrayList<Mascotas> mascotas){
     this.mascotas = mascotas;
   }
 
   public Registro(){}
 
-  public Registro(Clientes clientes, Mascotas mascotas){
+  public Registro(Clientes clientes, ArrayList<Mascotas> mascotas){
     this.clientes = clientes;
     this.mascotas = mascotas;
   }

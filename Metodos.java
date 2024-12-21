@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public interface Metodos{
 
@@ -31,15 +32,6 @@ public interface Metodos{
       LinkedHashMap<Integer,Registro> datos = new LinkedHashMap<>();
       datos.putAll(datosViejos);
       datos.putAll(datosNuevos);
- 
-      /*
-      if(datosViejos == null){
-        datos.putAll(datosNuevos);
-      }else{
-        datos.putAll(datosViejos);
-        datos.putAll(datosNuevos);
-      }
-      */
       
       FileOutputStream fileOut = new FileOutputStream("Datos.ser");
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -67,7 +59,7 @@ public interface Metodos{
     System.out.println("No se encontró el archivo, se usará mapa vacio");
      return new LinkedHashMap<>();   
     } catch(IOException | ClassNotFoundException e){
-        System.out.println("Error en deserialización de datos.");
+        System.out.println("Vacío.");
         return new LinkedHashMap<>();  
     }
   }
@@ -80,49 +72,18 @@ public interface Metodos{
 
   }
 
- /* 
-  public static int obtenerSiguienteID(){
-
-    LinkedHashMap<Integer,Registro> datos = new LinkedHashMap<>();
-    
-    try(FileInputStream fileInp = new FileInputStream("datos.ser");
-      ObjectInputStream inp = new ObjectInputStream(fileInp)){
-      
-      datos = (LinkedHashMap<Integer,Registro>) inp.readObject();
-
-      int maxID = 0;
-
-        for(Integer id : datos.keySet()){
-          if(id > maxID){
-            maxID = id;
-          }
-        }
-
-        return maxID + 1;
- 
-    }catch(FileNotFoundException e){
-      return 1;
-    }catch(IOException | ClassNotFoundException e){
-      e.printStackTrace();
-      return -1;
-    }
-
-  }*/
-
   public static LinkedHashMap<Integer, Registro> InputAdd(int maxID){
     Scanner reader = new Scanner (System.in);
+    int cant = 0; 
 
     LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
+    
+    ArrayList<Mascotas> mascotasAL = new ArrayList<>();
+    Registro reg = new Registro(new Clientes(), mascotasAL);
 
-    Registro reg = new Registro(new Clientes(), new Mascotas());
-
-
-   // int nuevoId = obtenerSiguienteID();
-
-        // ID del cliente y mascota(s).
-
+    
         reg.getClientes().setId(maxID);
-        reg.getMascotas().setId(maxID);
+ 
         System.out.println("ID del cliente y mascota(s): "+maxID);
 
         System.out.println("Nombre del Cliente: ");
@@ -133,40 +94,42 @@ public interface Metodos{
         
         System.out.print("DNI del Cliente: ");
         reg.getClientes().setDni(reader.nextInt());
+    reader.nextLine();
 
         System.out.print("Cantidad de Mascotas: ");
-        int cant = reader.nextInt();
+        cant = reader.nextInt();
+    reader.nextLine();
         reg.getClientes().setCantMasc(cant);
         System.out.println("");
 
-        for(int i=1; i<=cant; i++){ 
-          System.out.println("Datos de mascota N°:"+i);
-          reader.nextLine();
-          System.out.println("Nombre de la mascota");
-          reg.getMascotas().setNombre(reader.nextLine());
-          reg.getMascotas().setDomicilio(reg.getClientes().getDomicilio());
-          System.out.println("Especie: ");
-          reg.getMascotas().setEspecie(reader.nextLine());
-          System.out.println("Raza: ");
-          reg.getMascotas().setRaza(reader.nextLine());
-          // System.out.print("Sexo: ");
-          // mascota.setSexo(reader.next());
-          System.out.print("Edad: ");
-          reg.getMascotas().setEdad(reader.nextInt());
-          // System.out.print("Peso: ");
-          // mascota.setPeso(reader.nextDouble());
-          reader.nextLine();
-          System.out.println("Color: ");
-          reg.getMascotas().setColor(reader.nextLine());
-          System.out.println("Estado de salud: (NULL por ahora).");
-          reg.getMascotas().setEstadoSalud(null);
-          System.out.println("");
-        }
+    for(int i=1; i<=cant; i++){
+
+      Mascotas mascota = new Mascotas();
+      mascota.setId(maxID);
+      mascota.setNumero(i);
+
+      System.out.println("Datos de mascota N°:"+i);
+      System.out.println("Nombre de la mascota");
+      mascota.setNombre(reader.nextLine());
+      mascota.setDomicilio(reg.getClientes().getDomicilio());
+      System.out.println("Especie: ");
+      mascota.setEspecie(reader.nextLine());
+      System.out.println("Raza: ");
+      mascota.setRaza(reader.nextLine());
+      System.out.print("Edad: ");
+      mascota.setEdad(reader.nextInt());
+      reader.nextLine();
+      System.out.println("Color: ");
+      mascota.setColor(reader.nextLine());      
+      System.out.println("");
+
+      mascotasAL.add(mascota);
+    }
 
 
         try {
-          datos.put(maxID,reg);
-      //Metodos.Agregar(datos);         
+      datos.put(maxID, reg);
+
         } catch (NullPointerException e) {
           System.out.println("No se puede invocar 'putAll()' de LinkedHashMap porque <local 2> está vacio no se que.... ");
         }
