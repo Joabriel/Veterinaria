@@ -64,11 +64,50 @@ public interface Metodos{
     }
   }
 
-  public static void Modificar(){
+  public static void Modificar(int x){
+    LinkedHashMap<Integer, Registro> datosViejos = Leer();
+    LinkedHashMap<Integer, Registro> modificar = datosViejos;
+    LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
+
+    for(Integer id : modificar.keySet()){
+      if(x == id){
+        modificar = InputAdd(id);
+        break;
+      }
+    }
+
+    datos.putAll(datosViejos);
+    datos.putAll(modificar);
+
+    try (FileOutputStream fileOut = new FileOutputStream("Datos.ser"); 
+  ObjectOutputStream out = new ObjectOutputStream(fileOut)){
+      
+      out.writeObject(datos);
+
+    } catch (IOException e) {
+      System.out.println("Error: No se pudo realizar la transmisión.");
+    }
 
   }
 
-  public static void Eliminar(){
+  public static void Eliminar(int x){
+    LinkedHashMap<Integer, Registro> eliminar = Leer();
+    
+    for(Integer id : eliminar.keySet()){
+      if(id == x){
+        eliminar.remove(id);
+        break;
+      }
+    }
+
+    try (FileOutputStream fileOut = new FileOutputStream("Datos.ser");
+    ObjectOutputStream out = new ObjectOutputStream(fileOut)){
+
+    out.writeObject(eliminar);
+
+    }catch(IOException e){
+    System.out.println("Error.");
+    }
 
   }
 

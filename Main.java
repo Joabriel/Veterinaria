@@ -27,51 +27,76 @@ public class Main implements Metodos{
         case 2:
         System.out.println("LEER.");
           
-          System.out.println("Leer: 1-Lista completa | 2-Cliente específico.");
+          System.out.println("Leer: 1-Lista completa | 2-Cliente específico | 3-Salir.");
           x = reader.nextInt();
-          
-          if(x == 1){
+        
+        if(x == 1){
           System.out.println("Lista completa: ");
           System.out.println("");
           datos = Metodos.Leer();
 
-          if(datos != null){
+          if(datos != null){            
             for(Integer clave : datos.keySet()){
-            System.out.println("ID: "+clave+" Cliente: "+datos.get(clave));
-          }
+              System.out.println("ID: "+clave+" Cliente: "+datos.get(clave));
+            }
+          
           }else{
             System.out.println("No se pudieron obtener los datos.");
           }
-         
-          System.out.println("----");
-          }/*else if(x == 2){
       
-            System.out.println("Ingrese ID del cliente: ");
-            int y = reader.nextInt();
-            System.out.println(cargar.get(y));
-            System.out.println("----");
+          System.out.println("----");
           
-          }*/else{
-            System.out.println("Error.");
-          }
+        }else if(x == 2){
+
+          System.out.println("Ingrese ID del cliente: ");  
+          int y = reader.nextInt();
+          datos = Metodos.Leer();
+
+          if(datos != null){
+            for(Integer id : datos.keySet()){
+              if(y == id){
+              System.out.println("ID: "+id+" Cliente: "+datos.get(id));  
+              }
+            }  
+          }/*else{    
+            System.out.println("Cliente no encontrado.");*/          
+          System.out.println("----");
+        
+        }else if(x == 3){
+          System.out.println("Salida.");
+          selec = 5;
+        }else{  
+          System.out.println("Error.");
+        }
           
           break;
           case 3:
         System.out.println("ACTUALIZAR.");
+        System.out.println("");
+        System.out.println("Ingrese ID para Modificar: ");
+        x = reader.nextInt();
+        Metodos.Modificar(x);
+        System.out.println("Modificado.");
+        System.out.println("----");
+
           break;
           case 4:
         System.out.println("ELIMINAR.");
+        System.out.println("Ingrese ID a eliminar: ");
+        x = reader.nextInt();
+        Metodos.Eliminar(x);
+        System.out.println("Eliminado.");
+        System.out.println("----");
           break;
           case 5:
           System.out.println("Salida.");
-          selec = 3;
           break;
         default:
           System.out.println("Error. Operación inválida.");
           break;
         }
 
-    }while(selec != 3);
+    }while(selec != 5);
     reader.close();
   }
 
