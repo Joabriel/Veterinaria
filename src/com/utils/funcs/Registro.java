@@ -1,7 +1,12 @@
+package com.utils.funcs;
+
+import com.principal.modelos.Clientes;
+import com.principal.modelos.Mascotas;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
-class Registro implements Serializable{
+public class Registro implements Serializable{
   private Clientes clientes;
   private ArrayList<Mascotas> mascotas;
 

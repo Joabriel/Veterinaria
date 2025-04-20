@@ -1,3 +1,10 @@
+package com.principal;
+
+import com.principal.modelos.Clientes;
+import com.principal.modelos.Mascotas;
+import com.utils.funcs.Metodos;
+import com.utils.funcs.Registro;
+
 import java.util.Scanner;
 import java.util.LinkedHashMap;
 

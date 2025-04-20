@@ -1,4 +1,6 @@
-class Mascotas extends Animales{
+package com.principal.modelos;
+
+public class Mascotas extends Animales{
   private int numero;
 	private String especie;
 	private String raza;

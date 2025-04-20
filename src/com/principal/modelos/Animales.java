@@ -1,3 +1,4 @@
+package com.principal.modelos;
 import java.io.Serializable;
 
 public abstract class Animales implements Serializable{

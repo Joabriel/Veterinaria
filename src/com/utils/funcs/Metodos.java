@@ -1,3 +1,8 @@
+package com.utils.funcs;
+import com.utils.funcs.Registro;
+import com.principal.modelos.Clientes;
+import com.principal.modelos.Mascotas;    
+
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
@@ -48,6 +53,7 @@ public interface Metodos{
     }
   }
 
+  @SuppressWarnings("unchecked")
   public static LinkedHashMap<Integer,Registro> Leer(){
 
     try(FileInputStream fileInp = new FileInputStream("Datos.ser");

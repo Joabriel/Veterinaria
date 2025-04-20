@@ -1,3 +1,5 @@
+package com.principal.modelos;
+
 public class Clientes extends Animales{
   private int dni;
   private int cantMasc;
