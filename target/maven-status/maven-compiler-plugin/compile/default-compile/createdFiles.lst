@@ -1,6 +1,10 @@
+controladores/MenuVetController.class
+com/principal/modelos/Mascotas.class
+com/principal/Main.class
 com/principal/modelos/Clientes.class
 com/principal/modelos/Animales.class
-com/principal/modelos/Mascotas.class
+com/utils/controladores/AgregarController.class
+controladores/Stager.class
+com/utils/funcs/Metodos$DB.class
 com/utils/funcs/Registro.class
-com/principal/Main.class
 com/utils/funcs/Metodos.class

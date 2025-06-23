@@ -13,7 +13,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public interface Metodos{
+
+public class DB{
+  public static final String source = "/com/nosqldb/Datos.ser";
+}
 
   public static void Agregar(){
     
@@ -38,7 +43,7 @@ public interface Metodos{
       datos.putAll(datosViejos);
       datos.putAll(datosNuevos);
       
-      FileOutputStream fileOut = new FileOutputStream("Datos.ser");
+      FileOutputStream fileOut = new FileOutputStream(DB.source);
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
       out.writeObject(datos);
@@ -56,7 +61,7 @@ public interface Metodos{
   @SuppressWarnings("unchecked")
   public static LinkedHashMap<Integer,Registro> Leer(){
 
-    try(FileInputStream fileInp = new FileInputStream("Datos.ser");
+    try(FileInputStream fileInp = new FileInputStream(DB.source);
       ObjectInputStream inp = new ObjectInputStream(fileInp)){
       
       return (LinkedHashMap<Integer, Registro>) inp.readObject();
@@ -85,7 +90,7 @@ public interface Metodos{
     datos.putAll(datosViejos);
     datos.putAll(modificar);
 
-    try (FileOutputStream fileOut = new FileOutputStream("Datos.ser"); 
+    try (FileOutputStream fileOut = new FileOutputStream(DB.source); 
   ObjectOutputStream out = new ObjectOutputStream(fileOut)){
       
       out.writeObject(datos);
@@ -106,7 +111,7 @@ public interface Metodos{
       }
     }
 
-    try (FileOutputStream fileOut = new FileOutputStream("Datos.ser");
+    try (FileOutputStream fileOut = new FileOutputStream(DB.source);
     ObjectOutputStream out = new ObjectOutputStream(fileOut)){
 
     out.writeObject(eliminar);
