@@ -10,8 +10,9 @@
 
 <properties>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<maven.compile.source>17</maven.compile.source>
-<maven.compile.target>17</maven.compile.target>
+<java.version>21</java.version>
+<exec.mainClass>com.principal.Main</exec.mainClass>
+<path.to.fx>${env.PATH_TO_FX}</path.to.fx>
 </properties>
 
 <dependencies>
@@ -32,15 +33,42 @@
 </dependencies>
 
 <build>
-<plugins>
-	<plugin>
-		<groupId>org.codehaus.mojo</groupId>
-		<artifactId>exec-maven-plugin</artifactId>
-		<version>3.1.0</version>
-		<configuration>
-			<mainClass>com.principal.Main</mainClass>
-		</configuration>
-	</plugin>
-</plugins>
+	<plugins>
+		<!-- Plugin para compilar con Java 24 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.11.0</version>
+			<configuration>
+				<source>${java.version}</source>
+				<target>${java.version}</target>
+			</configuration>
+		</plugin>
+
+		<!-- Plugin para ejecutar JavaFX -->
+		<plugin>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-maven-plugin</artifactId>
+			<version>0.0.8</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>run</goal>
+					</goals>
+				</execution>
+      </executions>
+      <configuration>
+				<mainClass>${exec.mainClass}</mainClass>
+				<modulePath>${path.to.fx}</modulePath>
+				<options>
+					<option>--module-path</option>
+					<option>${path.to.fx}</option>
+					<option>--add-modules</option>
+					<option>javafx.controls,javafx.fxml</option>
+				</options>
+       </configuration>
+      </plugin>
+	</plugins>
 </build>
+
 </project>

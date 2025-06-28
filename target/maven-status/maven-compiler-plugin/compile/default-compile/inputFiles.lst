@@ -1,8 +1,8 @@
-/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/Main.java
-/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/modelos/Animales.java
-/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/modelos/Clientes.java
 /home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/modelos/Mascotas.java
-/home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/controladores/AgregarController.java
 /home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/controladores/MenuVetController.java
-/home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/funcs/Metodos.java
 /home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/funcs/Registro.java
+/home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/controladores/AgregarController.java
+/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/Main.java
+/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/modelos/Clientes.java
+/home/joabriel/Escritorio/Veterinaria/src/main/java/com/principal/modelos/Animales.java
+/home/joabriel/Escritorio/Veterinaria/src/main/java/com/utils/funcs/Metodos.java

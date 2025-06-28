@@ -1,4 +1,4 @@
-package controladores;
+package com.utils.controladores;
 
 import com.utils.controladores.AgregarController;
 
@@ -23,19 +23,19 @@ public class MenuVetController{
 
 
 	public void Agregar(ActionEvent event) throws IOException{
-		stager.iraStage("/com/resources/ui/Agregar.fxml", event);
+		stager.iraStage("/ui/agregar/AgregarCliente.fxml", event);
 	}
 
 	public void Leer(ActionEvent event) throws IOException{
-		stager.iraStage("/com/resources/ui/Leer.fxml", event);
+		stager.iraStage("/resources/ui/Leer.fxml", event);
 	}
 
 	public void Modificar(ActionEvent event) throws IOException{
-		stager.iraStage("/com/resources/ui/Modificar.fxml", event);
+		stager.iraStage("/resources/ui/Modificar.fxml", event);
 	}
 
 	public void Eliminar(ActionEvent event) throws IOException{
-		stager.iraStage("/com/resources/ui/Eliminar.fxml", event);
+		stager.iraStage("/resources/ui/Eliminar.fxml", event);
 	}
 
 
@@ -44,8 +44,8 @@ public class MenuVetController{
 class Stager{
 	
 	public void iraStage(String source, ActionEvent event) throws IOException{
-		FXMLLoader fxmlloader = new FXMLLoader();
-		fxmlloader.setLocation(new URL(source));
+		FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource(source));
+		//fxmlloader.setLocation(new URL(source));
 		Parent root = fxmlloader.load();
 
 		Stage stage = new Stage();
@@ -58,7 +58,7 @@ class Stager{
 }
 
 	public void volverPrincipalStage(ActionEvent event) throws IOException{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/resources/ui/principal/menuVet.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/ui/principal/menuVet.fxml"));
 		Parent root = loader.load();
 		Stage agregarStage = new Stage();
     agregarStage.setScene(new Scene(root));
