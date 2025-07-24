@@ -1,7 +1,8 @@
 package com.utils.controladores; 
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+// Controladores.
+//import javafx.fxml.FXML;
+//import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,29 +12,67 @@ import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import javafx.fxml.FXML;
+
+// Manejo de archivos.
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 
-import com.principal.modelos.Clientes;
+// Mis archivos.
+import com.utils.funcs.Registro;
+import com.utils.funcs.Mets;
+//import com.utils.funcs.MaxID;
+import java.util.LinkedHashMap;
+import com.utils.controladores.MenuVetController;
 
 
 
 public class AgregarController{
 
-	@FXML
-	private TextField txtfld_ID, txtfld_Name, txtfld_DNI, txtfld_Address, txtfld_cantPets; 
+	// Instancias.
+	LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
+	Registro reg = new Registro();
+	ArrayList<LinkedHashMap<Integer, Registro>> enviarDatos = new ArrayList<>();
+	Scanner reader = new Scanner(System.in);
+
+	Stager stager = new Stager();
+	//MaxID maxID = new MaxID();
+	Mets mets = new Mets();
+
+	// Variables
 	
-// Creo que no es necesario agregar los botones.
+	private int  dni, cantPets;
+	public String name, address;
+
+
+	@FXML
+	private Label idLabel;
+	private TextField  txtfld_Name, txtfld_DNI, txtfld_Address, txtfld_cantPets;
+
+
 	@FXML
 	private Button ok_bttn, cancel_bttn;
 
-	private String name, address;
-	private int id, dni, cantPets;
 
-
-	public void AddID(ActionEvent event) throws IOException{
-		id = Integer.parseInt(txtfld_ID.getText());
+	public void setIdLabel(int valor){
+		//valor = maxID.obtenerId();
+		idLabel.setText(""+valor);
 	}
 
+
+	public String getIdLabel(){
+		return idLabel.getText();
+	}
+
+	
 	public void AddName(ActionEvent event) throws IOException{
 		name = txtfld_Name.getText();
 	}
@@ -51,19 +90,22 @@ public class AgregarController{
 	}
 
 
-	Clientes clientes = new Clientes();
+	public void Aceptar(ActionEvent event) throws IOException{
 
-	public void Aceptar(ActionEvent event){
+		reg.getClientes().setNombre(name);
+		reg.getClientes().setDni(dni);
+		reg.getClientes().setDomicilio(address);
+		reg.getClientes().setCantPets(cantPets);
+	
+		int key = Integer.parseInt(getIdLabel());
 
-		clientes.setNombre(name);
-		clientes.setDomicilio(address);
-		clientes.setId(id);
-		clientes.setDni(dni);
-		clientes.setCantMasc(cantPets);
+		datos.put(key,reg);
+		enviarDatos.add(datos);
+		mets.Agregar(enviarDatos);
 	}
 
-	public void Cancelar(ActionEvent event){
-
+	public void Cancelar(ActionEvent event) throws IOException{
+		stager.volverPrincipalStage(event);
 	}
 
 }

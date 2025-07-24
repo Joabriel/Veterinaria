@@ -1,128 +1,33 @@
 package com.utils.funcs;
 import com.utils.funcs.Registro;
+/*import com.utils.funcs.MaxID;
+import com.utils.controladores.AgregarController;
 import com.principal.modelos.Clientes;
-import com.principal.modelos.Mascotas;    
+import com.principal.modelos.Mascotas;*/
 
-import java.io.FileOutputStream;
+/*import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
-import java.util.LinkedHashMap;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.Scanner;*/
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import com.utils.funcs.Registro;
+
 
 
 public interface Metodos{
 
-public class DB{
-  public static final String source = "/com/nosqldb/Datos.ser";
+  void Agregar(ArrayList<LinkedHashMap<Integer, Registro>> datos);
+  LinkedHashMap<Integer, Registro> Leer(/*LinkedHashMap<Integer, Registro> datos*/);
+  //void Modificar(int valor);
+  //void Eliminar(int valor);
 }
 
-  public static void Agregar(){
-    
-    try{
-
-      LinkedHashMap<Integer,Registro> datosViejos = new LinkedHashMap<>(Leer()); 
-
-      int maxID = 0;
-
-        for(Integer id : datosViejos.keySet()){
-          if(id > maxID){
-            maxID = id;
-          }
-        }
-
-        maxID = maxID + 1;
-
-
-      LinkedHashMap<Integer,Registro> datosNuevos = new LinkedHashMap<>(InputAdd(maxID));
-
-      LinkedHashMap<Integer,Registro> datos = new LinkedHashMap<>();
-      datos.putAll(datosViejos);
-      datos.putAll(datosNuevos);
-      
-      FileOutputStream fileOut = new FileOutputStream(DB.source);
-      ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-      out.writeObject(datos);
-
-      fileOut.close();
-      out.close();
-      System.out.println("");
-      System.out.println("Datos Cargados.");
-      System.out.println("----");
-    }catch(IOException e){
-      System.out.println("Error en serialización de los datos.");
-    }
-  }
-
-  @SuppressWarnings("unchecked")
-  public static LinkedHashMap<Integer,Registro> Leer(){
-
-    try(FileInputStream fileInp = new FileInputStream(DB.source);
-      ObjectInputStream inp = new ObjectInputStream(fileInp)){
-      
-      return (LinkedHashMap<Integer, Registro>) inp.readObject();
-
-    } catch(FileNotFoundException e){
-    System.out.println("No se encontró el archivo, se usará mapa vacio");
-     return new LinkedHashMap<>();   
-    } catch(IOException | ClassNotFoundException e){
-        System.out.println("Vacío.");
-        return new LinkedHashMap<>();  
-    }
-  }
-
-  public static void Modificar(int x){
-    LinkedHashMap<Integer, Registro> datosViejos = Leer();
-    LinkedHashMap<Integer, Registro> modificar = datosViejos;
-    LinkedHashMap<Integer, Registro> datos = new LinkedHashMap<>();
-
-    for(Integer id : modificar.keySet()){
-      if(x == id){
-        modificar = InputAdd(id);
-        break;
-      }
-    }
-
-    datos.putAll(datosViejos);
-    datos.putAll(modificar);
-
-    try (FileOutputStream fileOut = new FileOutputStream(DB.source); 
-  ObjectOutputStream out = new ObjectOutputStream(fileOut)){
-      
-      out.writeObject(datos);
-
-    } catch (IOException e) {
-      System.out.println("Error: No se pudo realizar la transmisión.");
-    }
-
-  }
-
-  public static void Eliminar(int x){
-    LinkedHashMap<Integer, Registro> eliminar = Leer();
-    
-    for(Integer id : eliminar.keySet()){
-      if(id == x){
-        eliminar.remove(id);
-        break;
-      }
-    }
-
-    try (FileOutputStream fileOut = new FileOutputStream(DB.source);
-    ObjectOutputStream out = new ObjectOutputStream(fileOut)){
-
-    out.writeObject(eliminar);
-
-    }catch(IOException e){
-    System.out.println("Error.");
-    }
-
-  }
-
-  public static LinkedHashMap<Integer, Registro> InputAdd(int maxID){
+// Formulario.
+/*  public static LinkedHashMap<Integer, Registro> InputAdd(int maxID){
     Scanner reader = new Scanner (System.in);
     int cant = 0; 
 
@@ -188,5 +93,4 @@ public class DB{
 
   }
 
-
-} 
+}*/

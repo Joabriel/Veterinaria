@@ -1,17 +1,31 @@
 package com.utils.controladores;
 
+// Mis archivos.
+import com.utils.controladores.Stager;
+//import com.utils.funcs.Metodos;
+//import com.utils.funcs.Mets;
+//import com.utils.funcs.Registro;
+import com.utils.funcs.MaxID;
 import com.utils.controladores.AgregarController;
+//import com.principal.modelos.Clientes;
+//import com.principal.modelos.Mascotas;
+//import com.nosqldb.NosqlDB;
 
-import javafx.fxml.FXML;
+// Controladores.
+/*
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import javafx.scene.Node;
+import javafx.scene.Node;*/
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import java.io.IOException;
-import java.net.URL;
+import java.util.function.Consumer;
+//import java.net.URL;
+
+
 
 public class MenuVetController{
 
@@ -20,55 +34,32 @@ public class MenuVetController{
 
 
 	Stager stager = new Stager();
-
+	//Metodos mets = new Mets();
+	MaxID maxID = new MaxID();
+	
 
 	public void Agregar(ActionEvent event) throws IOException{
-		stager.iraStage("/ui/agregar/AgregarCliente.fxml", event);
+		stager.iraStage("/ui/agregar/AgregarCliente.fxml", event, (AgregarController c) -> {
+			c.setIdLabel(maxID.obtenerId());
+		}); 
+    //mets.Agregar();
 	}
 
 	public void Leer(ActionEvent event) throws IOException{
-		stager.iraStage("/resources/ui/Leer.fxml", event);
+		stager.iraStage("/resources/ui/Leer.fxml", event, null);
 	}
 
-	public void Modificar(ActionEvent event) throws IOException{
-		stager.iraStage("/resources/ui/Modificar.fxml", event);
-	}
+	/*public void Modificar(ActionEvent event) throws IOException{
+		stager.iraStage("/resources/ui/modificar/Modificar.fxml", event, null);
+	}*/
 
-	public void Eliminar(ActionEvent event) throws IOException{
-		stager.iraStage("/resources/ui/Eliminar.fxml", event);
-	}
+	/*public void Eliminar(ActionEvent event) throws IOException{
+		stager.iraStage("/resources/ui/Eliminar.fxml", event, null);
+	}*/
 
 
 }
 
-class Stager{
-	
-	public void iraStage(String source, ActionEvent event) throws IOException{
-		FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource(source));
-		//fxmlloader.setLocation(new URL(source));
-		Parent root = fxmlloader.load();
 
-		Stage stage = new Stage();
-    stage.setScene(new Scene(root));
-    stage.show();		
-
-		// Cerrar ventana actual.
-		Stage actualStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		actualStage.close();
-}
-
-	public void volverPrincipalStage(ActionEvent event) throws IOException{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/ui/principal/menuVet.fxml"));
-		Parent root = loader.load();
-		Stage agregarStage = new Stage();
-    agregarStage.setScene(new Scene(root));
-    agregarStage.show();
-
-		// Cerrar ventana actual.
-		Stage actualStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		actualStage.close();
-	}
-
-}
 
 

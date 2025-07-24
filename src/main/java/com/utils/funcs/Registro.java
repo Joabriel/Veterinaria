@@ -7,9 +7,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Registro implements Serializable{
-  private Clientes clientes;
-  private ArrayList<Mascotas> mascotas;
+  private Clientes clientes = new Clientes();
+  private ArrayList<Mascotas> mascotas = new ArrayList();
 
+  // Clientes.
   public Clientes getClientes(){
     return clientes;
   }
@@ -17,6 +18,7 @@ public class Registro implements Serializable{
     this.clientes = clientes;
   }
 
+  // Mascotas.
   public ArrayList<Mascotas> getMascotas(){
     return mascotas;
   }

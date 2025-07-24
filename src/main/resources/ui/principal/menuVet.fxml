@@ -7,9 +7,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.utils.controladores.MenuVetController">
    <children>
       <Button fx:id="btnAgregar" layoutX="161.0" layoutY="149.0" mnemonicParsing="false" onAction="#Agregar" prefHeight="45.0" prefWidth="90.0" text="Agregar" textFill="#0c56d7" />
-      <Button fx:id="btnModificar" layoutX="161.0" layoutY="260.0" mnemonicParsing="false" onAction="#Modificar" prefHeight="45.0" prefWidth="90.0" text="Modificar" textFill="#e8650e" />
-      <Button fx:id="btnLeer" layoutX="333.0" layoutY="149.0" mnemonicParsing="false" onAction="#Leer" prefHeight="45.0" prefWidth="78.0" text="Leer" textFill="#edf80d" />
-      <Button fx:id="btnEliminar" layoutX="333.0" layoutY="260.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="45.0" prefWidth="78.0" text="Eliminar" textFill="#ee0202" />
+      <!--<Button fx:id="btnModificar" layoutX="161.0" layoutY="260.0" mnemonicParsing="false" onAction="#Modificar" prefHeight="45.0" prefWidth="90.0" text="Modificar" textFill="#e8650e" />--> 
+    <Button fx:id="btnLeer" layoutX="333.0" layoutY="149.0" mnemonicParsing="false" onAction="#Leer" prefHeight="45.0" prefWidth="78.0" text="Leer" textFill="#edf80d" />
+      <!--<Button fx:id="btnEliminar" layoutX="333.0" layoutY="260.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="45.0" prefWidth="78.0" text="Eliminar" textFill="#ee0202" />-->
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="191.0" layoutY="62.0" prefHeight="34.0" prefWidth="219.0" text="Selecciona opción:" />
    </children>
 </AnchorPane>

@@ -27,9 +27,6 @@ public abstract class Animales implements Serializable{
   public void setDomicilio(String domicilio){
     this.domicilio = domicilio;
   }
-
-  
-
 }
 
 

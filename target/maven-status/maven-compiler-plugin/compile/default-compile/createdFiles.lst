@@ -1,10 +1,12 @@
 com/principal/Main.class
 com/utils/controladores/Stager.class
+com/utils/funcs/MaxID.class
 com/utils/controladores/AgregarController.class
-com/utils/funcs/Metodos$DB.class
 com/utils/funcs/Registro.class
+com/utils/funcs/Mets.class
 com/principal/modelos/Mascotas.class
 com/principal/modelos/Clientes.class
 com/principal/modelos/Animales.class
 com/utils/controladores/MenuVetController.class
 com/utils/funcs/Metodos.class
+com/nosqldb/NosqlDB.class
